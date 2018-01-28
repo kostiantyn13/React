@@ -24,9 +24,9 @@ function Guru(props) {
   function handleClick() {
     return props.count++;
   };
-  setState(props){
-    this.count=count
-  };
+  this.setState({
+    this.count = count
+  });
   return (
     <div>
       <div className="count">{props.count}</div>
@@ -47,6 +47,11 @@ ReactDOM.render(
       imgUrl="img/angular.png"
       title="Angular 2"
       subtitle="Один фреймворк"
+    />
+    <Guru
+      imgUrl="img/ember.png"
+      title="Ember"
+      subtitle=""
     />
   </div>,
   document.getElementById("root")
