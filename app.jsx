@@ -21,9 +21,16 @@ function Guru(props) {
   // так как просто возвращает JSX
   // можно передать аргументы - СВОЙСТВА - property("props")
   //    можно использовать только выражения(напр. цикл - это не выражение, ибо ничего не возвращает)
+  function handleClick() {
+    return props.count++;
+  };
+  setState(props){
+    this.count=count
+  };
   return (
     <div>
-      <img src={props.imgUrl} />
+      <div className="count">{props.count}</div>
+      <img src={props.imgUrl} onClick={handleClick} />
       <h1>{props.title}</h1>
       <p>{props.subtitle}</p>
     </div>
