@@ -16,40 +16,42 @@ console.log(dom); //всегда вернет готовый (виртуальн
 //На базовом уровне это функция, которая возвращает один или несколько
 //реакт элементов
 */
-function Guru(props) {
+const Bbb = React.createClass({
   // это функциональний вид компонента
   // так как просто возвращает JSX
   // можно передать аргументы - СВОЙСТВА - property("props")
   //    можно использовать только выражения(напр. цикл - это не выражение, ибо ничего не возвращает)
-  count = 0;
-  function handleClick() {
-    this.state.count++;
-  }
-  this.setState({
-    count: this.state.count
-  });
-  render: function(){
+  getInitialState: function() {
+    return {
+      count: 0
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      count: this.state.count + 1
+    });
+  },
+
+  render: function() {
     return (
-    <div>
-      <div className="count">{this.state.count}</div>
-      <img src={props.imgUrl} onClick={this.handleClick} />
-      <h1>{props.title}</h1>
-      <p>{props.subtitle}</p>
-    </div>
-  );
-}}
+      <div>
+        <div className="count">{this.state.count}</div>
+        <img src={this.props.imgUrl} onClick={this.handleClick} />
+        <h1>{this.props.title}</h1>
+        <p>{this.props.subtitle}</p>
+      </div>
+    );
+  }
+});
 ReactDOM.render(
   <div>
-    <Guru
+    <Bbb
       imgUrl="favicon.ico"
       title="React"
       subtitle="Библиотека для создания пользовательских интерфейсов"
     />
-    <Guru
-      imgUrl="img/angular.png"
-      title="Angular 2"
-      subtitle="Один фреймворк"
-    />
+    <Bbb imgUrl="img/angular.png" title="Angular 2" subtitle="Один фреймворк" />
   </div>,
   document.getElementById("root")
 );
