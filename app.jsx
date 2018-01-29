@@ -21,21 +21,23 @@ function Guru(props) {
   // так как просто возвращает JSX
   // можно передать аргументы - СВОЙСТВА - property("props")
   //    можно использовать только выражения(напр. цикл - это не выражение, ибо ничего не возвращает)
+  count = 0;
   function handleClick() {
-    return props.count++;
-  };
+    this.state.count++;
+  }
   this.setState({
-    this.count = count
+    count: this.state.count
   });
-  return (
+  render: function(){
+    return (
     <div>
-      <div className="count">{props.count}</div>
-      <img src={props.imgUrl} onClick={handleClick} />
+      <div className="count">{this.state.count}</div>
+      <img src={props.imgUrl} onClick={this.handleClick} />
       <h1>{props.title}</h1>
       <p>{props.subtitle}</p>
     </div>
   );
-}
+}}
 ReactDOM.render(
   <div>
     <Guru
@@ -47,11 +49,6 @@ ReactDOM.render(
       imgUrl="img/angular.png"
       title="Angular 2"
       subtitle="Один фреймворк"
-    />
-    <Guru
-      imgUrl="img/ember.png"
-      title="Ember"
-      subtitle=""
     />
   </div>,
   document.getElementById("root")
